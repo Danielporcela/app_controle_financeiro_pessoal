@@ -886,7 +886,7 @@ def planejamento():
         FROM despesas_fixas
     """).fetchone()[0]
 
-    for item in parcelas_mes
+    for item in parcelas_mes:
 
         total_mes = item[1] + despesas_fixas_total
 
