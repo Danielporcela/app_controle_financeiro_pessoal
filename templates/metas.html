@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="hero">
+  <h1>🎯 Metas Financeiras</h1>
+
+  <p>Acompanhe seus objetivos financeiros</p>
+</div>
+
+<div class="card">
+  <h3>Nova Meta</h3>
+
+  <form action="/meta" method="post">
+    <input
+      type="text"
+      name="descricao"
+      placeholder="Descrição da Meta"
+      required
+    />
+
+    <input
+      type="number"
+      step="0.01"
+      min="0"
+      name="objetivo"
+      placeholder="Valor Objetivo"
+      required
+    />
+
+    <button type="submit">Criar Meta</button>
+  </form>
+</div>
+
+{% for meta in metas %} {% set percentual = ((meta[3] / meta[2]) * 100) if
+meta[2] > 0 else 0 %}
+
+<div class="card">
+  <h3>{{ meta[1] }}</h3>
+
+  <p>
+    Objetivo:
+    <strong>
+      R$ {{ "{:,.2f}".format(meta[2]).replace(",", "X").replace(".",
+      ",").replace("X", ".") }}
+    </strong>
+  </p>
+
+  <p>
+    Atual:
+    <strong>
+      R$ {{ "{:,.2f}".format(meta[3]).replace(",", "X").replace(".",
+      ",").replace("X", ".") }}
+    </strong>
+  </p>
+
+  <div class="progress">
+    <div class="progress-bar" style="width:{{ percentual }}%"></div>
+  </div>
+
+  <p>{{ percentual|round(1) }}%</p>
+  <p>
+    ⏳ Previsão de conclusão:
+
+    <strong> {{ metas_previsao[loop.index0] }} meses </strong>
+  </p>
+  <form action="/meta/adicionar/{{ meta[0] }}" method="post">
+    <input
+      type="number"
+      step="0.01"
+      min="0"
+      name="valor"
+      placeholder="Adicionar Valor"
+      required
+    />
+
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <br />
+
+  <a
+    href="/excluir_meta/{{ meta[0] }}"
+    class="btn-delete"
+    onclick="return confirm('Excluir meta?');"
+  >
+    Excluir Meta
+  </a>
+</div>
+
+{% endfor %} {% endblock %}

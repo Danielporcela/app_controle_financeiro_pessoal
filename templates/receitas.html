@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero">
+
+
+<h1>💰 Receitas</h1>
+
+<p>
+    Controle de entradas financeiras
+</p>
+
+
+</div>
+
+<div class="card">
+
+
+<h3>Nova Receita</h3>
+
+<form action="/receita"
+      method="post">
+
+    <input
+        type="text"
+        name="descricao"
+        placeholder="Descrição"
+        required>
+
+    <input
+        type="number"
+        step="0.01"
+        min="0"
+        name="valor"
+        placeholder="Valor"
+        required>
+
+    <button>
+
+        Salvar Receita
+
+    </button>
+
+</form>
+
+
+</div>
+
+<div class="card">
+
+
+<h3>Receitas Cadastradas</h3>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for r in receitas %}
+
+    <tr>
+
+        <td>{{ r[0] }}</td>
+
+        <td>{{ r[1] }}</td>
+
+        <td>
+            R$ {{ "{:,.2f}".format(r[2]).replace(",", "X").replace(".", ",").replace("X", ".") }}
+        </td>
+
+        <td>{{ r[3] }}</td>
+
+        <td>
+
+            <a
+                href="/excluir_receita/{{ r[0] }}"
+                onclick="return confirm('Excluir receita?')"
+                class="btn-delete">
+
+                Excluir
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+
+</div>
+
+{% endblock %}
+

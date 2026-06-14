@@ -1,0 +1,124 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="hero">
+  <h1>
+    R$ {{ "{:,.2f}".format(saldo).replace(",", "X").replace(".",
+    ",").replace("X", ".") }}
+  </h1>
+
+  <p>Saldo Disponível</p>
+</div>
+
+<div class="cards">
+  <div class="card receita">
+    <h3>💰 Receitas</h3>
+
+    <h2>
+      R$ {{ "{:,.2f}".format(receitas).replace(",", "X").replace(".",
+      ",").replace("X", ".") }}
+    </h2>
+  </div>
+  <div class="card score">
+    <h3>🏆 Score Financeiro</h3>
+
+    <h6>🏆 Score Financeiro</h6>
+
+    <h2>{{ score }}/100</h2>
+
+
+    <p>Gastando {{ percentual_gasto|round(1) }}% da sua renda</p>
+
+    <p>
+      <strong>{{ classificacao }}</strong>
+    </p>
+  </div>
+  <div class="card despesa">
+    <h3>💸 Despesas + Compras cartão </h3>
+
+    <h2>
+      R$ {{ "{:,.2f}".format(despesas).replace(",", "X").replace(".",
+      ",").replace("X", ".") }}
+    </h2>
+  </div>
+
+  <div class="card meta">
+    <h3>🎯 Metas</h3>
+
+    <h2>{{ metas }}</h2>
+  </div>
+
+  <div class="card cartao">
+    <h3>💳 Cartões</h3>
+
+    <h2>{{ cartoes }}</h2>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Nova Receita</h3>
+
+    <form action="/receita" method="post">
+      <input type="text" name="descricao" placeholder="Descrição" required />
+
+      <input
+        type="number"
+        step="0.01"
+        min="0"
+        name="valor"
+        placeholder="Valor"
+        required
+      />
+
+      <button type="submit">Salvar Receita</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Nova Despesa</h3>
+
+    <form action="/despesa" method="post">
+      <input type="text" name="descricao" placeholder="Descrição" required />
+
+      <input
+        type="number"
+        step="0.01"
+        min="0"
+        name="valor"
+        placeholder="Valor"
+        required
+      />
+
+      <input
+        type="number"
+        name="parcelas"
+        value="1"
+        min="1"
+        placeholder="Parcelas"
+        required
+      />
+
+      <button type="submit">Salvar Despesa</button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <h3>📊 Resumo Financeiro</h3>
+
+  <div style="height: 400px">
+    <canvas
+      id="grafico"
+      data-receitas="{{ receitas }}"
+      data-despesas="{{ despesas }}"
+      data-saldo="{{ saldo }}"
+    >
+    </canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+{% endblock %}

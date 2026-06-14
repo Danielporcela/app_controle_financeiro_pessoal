@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="hero">
+  <h1>📄 Fatura do Cartão</h1>
+
+  <p>Mês {{ mes }}</p>
+
+  <div class="card">
+    <form method="get">
+      <input type="month" name="mes" value="{{ mes }}" />
+
+      <button type="submit">Consultar</button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <h2>
+    Fatura Atual: R$ {{ "{:,.2f}".format(fatura).replace(",", "X").replace(".",
+    ",").replace("X", ".") }}
+  </h2>
+</div>
+
+<div class="card">
+  <table>
+    <tr>
+      <th>Descrição</th>
+      <th>Parcela</th>
+      <th>Valor</th>
+    </tr>
+
+    {% for c in compras %}
+
+    <tr>
+      <td>{{ c[0] }}</td>
+
+      <td>{{ c[2] }}/{{ c[3] }}</td>
+
+      <td>
+        R$ {{ "{:,.2f}".format(c[1]).replace(",", "X").replace(".",
+        ",").replace("X", ".") }}
+      </td>
+    </tr>
+
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

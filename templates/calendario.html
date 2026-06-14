@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero">
+
+    <h1>📅 Calendário Financeiro</h1>
+
+    <p>Próximos vencimentos e parcelas</p>
+
+</div>
+
+{% if eventos %}
+
+<div class="card">
+
+<table>
+
+    <tr>
+        <th>Descrição</th>
+        <th>Vencimento</th>
+        <th>Valor</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for evento in eventos %}
+
+    <tr>
+
+        <td>{{ evento[1] }}</td>
+
+        <td>{{ evento[2] }}</td>
+
+        <td>
+            R$ {{ "{:,.2f}".format(evento[3]).replace(",", "X").replace(".", ",").replace("X", ".") }}
+        </td>
+
+        <td>
+
+            <a
+                href="/excluir_parcela/{{ evento[0] }}"
+                class="btn-delete"
+                onclick="return confirm('Excluir parcela?')">
+
+                Excluir
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</div>
+
+{% else %}
+
+<div class="card">
+
+    <h3>Nenhum compromisso encontrado</h3>
+
+    <p>Não existem parcelas futuras cadastradas.</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

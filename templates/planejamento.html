@@ -1,0 +1,93 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>📈 Planejamento Financeiro</h1>
+
+<div class="card">
+  <h2>Saldo Futuro Previsto</h2>
+  <p>
+    Comprometimento da renda:
+
+    <strong> {{ percentual_comprometido|round(1) }}% </strong>
+  </p>
+  <h1>
+    R$ {{ "{:,.2f}".format(saldo_previsto).replace(",", "X").replace(".",
+    ",").replace("X", ".") }}
+  </h1>
+</div>
+
+<div class="card">
+  <h2>Previsão de Gastos por Mês</h2>
+  <table>
+    <tr>
+      <th>Mês</th>
+      <th>Total Previsto</th>
+    </tr>
+
+    {% for p in projecao_12m %}
+
+    <tr>
+      <td>{{ p[0] }}</td>
+
+      <td>
+        R$ {{ "{:,.2f}".format(p[1]).replace(",", "X").replace(".",
+        ",").replace("X", ".") }}
+      </td>
+    </tr>
+
+    {% endfor %}
+  </table>
+  <table>
+    <tr>
+      <th>Mês</th>
+      <th>Gasto Previsto</th>
+    </tr>
+
+    {% for g in gastos_mes %}
+
+    <tr>
+      <td>{{ g[0] }}</td>
+
+      <td>
+        R$ {{ "{:,.2f}".format(g[1]).replace(",", "X").replace(".",
+        ",").replace("X", ".") }}
+      </td>
+    </tr>
+
+    {% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h2>🎯 Metas</h2>
+
+  {% for meta in metas %} {% set percentual = ((meta[3] / meta[2]) * 100) if
+  meta[2] > 0 else 0 %}
+
+  <p>{{ meta[1] }} ({{ percentual|round(1) }}%)</p>
+
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>💳 Cartões</h2>
+
+  {% for cartao in cartoes %}
+
+  <p>
+    {{ cartao[1] }} | Limite: R$ {{ "{:,.2f}".format(cartao[2]).replace(",",
+    "X").replace(".", ",").replace("X", ".") }}
+  </p>
+
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>🧮 Simulador de Objetivos</h2>
+
+  <p>
+    Exemplo: Guardando R$ 500 por mês, uma meta de R$ 10.000 será atingida em 20
+    meses.
+  </p>
+</div>
+
+{% endblock %}

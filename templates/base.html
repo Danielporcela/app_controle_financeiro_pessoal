@@ -1,0 +1,109 @@
+<!doctype html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FinControl</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="logo">💰 FinControl</div>
+
+      <ul>
+        <li>
+          <a href="/"> 🏠 Dashboard </a>
+        </li>
+
+        <li>
+          <a href="/receitas"> 💰 Receitas </a>
+        </li>
+
+        <li>
+          <a href="/despesas"> 💸 Despesas </a>
+        </li>
+
+        <li>
+          <a href="/metas"> 🎯 Metas </a>
+        </li>
+
+        <li>
+          <a href="/cartoes"> 💳 Cartões </a>
+        </li>
+
+        <li>
+          <a href="/compras_cartao"> 🛒 Compras Cartão </a>
+        </li>
+
+        <li>
+          <a href="/calendario"> 📅 Calendário </a>
+        </li>
+
+        <li>
+          <a href="/planejamento"> 📈 Planejamento </a>
+        </li>
+        <li>
+          <a href="/despesas_fixas"> 📄 Despesas Fixas </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="version">FinControl v1.0</div>
+      </div>
+    </div>
+
+    <div class="content">
+      <header class="topbar">
+        <div>
+          <h2>Controle Financeiro</h2>
+
+          <span> Organize suas finanças </span>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="theme-btn" onclick="toggleTheme()">🌙 Tema</button>
+        </div>
+      </header>
+
+      {% block content %} {% endblock %}
+    </div>
+
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("light-mode");
+
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("light-mode"),
+        );
+      }
+
+      window.onload = function () {
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "true") {
+          document.body.classList.add("light-mode");
+        }
+      };
+    </script>
+  </body>
+</html>
