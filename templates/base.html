@@ -29,7 +29,15 @@
     <button class="menu-mobile" onclick="toggleMenu()">☰</button>
 
     <div class="sidebar" id="sidebar">
-      <div class="logo">💰 FinControl</div>
+      <div class="logo">
+        <a href="https://app-controle-financeiro-pessoal.onrender.com" target="_blank">
+          <img
+            src="{{ url_for('static', filename='img/logo.png') }}"
+            alt="FinControl"
+            class="logo-img"
+          />
+        </a>
+      </div>
 
       <ul>
         <li><a href="/">🏠 Dashboard</a></li>
