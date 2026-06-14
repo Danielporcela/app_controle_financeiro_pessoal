@@ -547,29 +547,63 @@ MOBILE
     }
 }
 
-@media(max-width:600px){
+@media(max-width:600px) {
 
+    .sidebar {
 
-.sidebar{
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+    }
 
-    display:none;
+    .sidebar ul {
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar li {
+
+        margin-bottom: 0;
+    }
+
+    .sidebar a {
+
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .content {
+
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .cards {
+
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+
+        font-size: 28px;
+    }
+
+    table {
+
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
 
-.content{
-
-    margin-left:0;
-}
-
-.cards{
-
-    grid-template-columns:1fr;
-}
-
-.grid{
-
-    grid-template-columns:1fr;
-}
-}
 .btn-delete{
 
     background:#EF4444;
