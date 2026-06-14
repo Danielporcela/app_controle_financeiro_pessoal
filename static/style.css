@@ -206,23 +206,21 @@ cursor:pointer;
 HERO
 ========================== */
 
-.hero{
+.hero {
 
+    background: linear-gradient(135deg,
+            #3B82F6,
+            #2563EB);
 
-background:
-linear-gradient(
-    135deg,
-    #3B82F6,
-    #2563EB
-);
+    border-radius: 24px;
 
-border-radius:30px;
+    padding: 30px;
 
-padding:40px;
+    margin-bottom: 25px;
 
-margin-bottom:25px;
+    max-width: 100%;
 
-
+    overflow: hidden;
 }
 
 .hero h1{
@@ -524,29 +522,40 @@ color:#0F172A;
 MOBILE
 ========================== */
 
-@media(max-width:900px){
-    .sidebar{
-        width:80px;
+@media(max-width:768px) {
+
+    .sidebar {
+        display: none;
     }
 
-    .logo{
-        font-size:16px;
+    .sidebar.active {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 260px;
+        height: 100vh;
+        z-index: 9998;
     }
 
-    .sidebar a{
-        font-size:12px;
-        padding:10px;
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
     }
 
-    .content{
-        margin-left:80px;
-    }
-
-    .hero h1{
-        font-size:32px;
+    .menu-mobile {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
     }
 }
-
 @media(max-width:600px) {
 
     .sidebar {
@@ -655,4 +664,66 @@ MOBILE
         #16a34a
     );
 
+}
+
+.menu-btn {
+
+    display: none;
+}
+
+@media(max-width:768px) {
+
+    .menu-btn {
+
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 9999;
+
+        background: #111827;
+        color: white;
+
+        border: none;
+        border-radius: 12px;
+
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar {
+
+        display: none;
+    }
+}
+
+.menu-mobile {
+    display: none;
+}
+
+@media(max-width:768px) {
+
+    .menu-mobile {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: fixed;
+        top: 15px;
+        left: 15px;
+
+        width: 50px;
+        height: 50px;
+
+        border: none;
+        border-radius: 12px;
+
+        background: #111827;
+        color: white;
+
+        font-size: 24px;
+
+        z-index: 9999;
+    }
 }
