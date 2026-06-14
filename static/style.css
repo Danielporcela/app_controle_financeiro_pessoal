@@ -525,85 +525,40 @@ MOBILE
 @media(max-width:768px) {
 
     .sidebar {
-        display: none;
-    }
 
-    .sidebar.active {
-        display: block;
+        display: block !important;
+
+        width: 200px;
+
         position: fixed;
+
         left: 0;
         top: 0;
-        width: 260px;
+
         height: 100vh;
-        z-index: 9998;
+
+        overflow-y: auto;
     }
 
     .content {
-        margin-left: 0;
-        width: 100%;
+
+        margin-left: 200px;
+
+        width: calc(100% - 220px);
+
         padding: 15px;
     }
 
     .menu-mobile {
-        display: flex;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        width: 50px;
-        height: 50px;
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-    }
-}
-@media(max-width:600px) {
 
-    .sidebar {
-
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding: 15px;
-    }
-
-    .sidebar ul {
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .sidebar li {
-
-        margin-bottom: 0;
-    }
-
-    .sidebar a {
-
-        font-size: 14px;
-        padding: 10px 12px;
-    }
-
-    .content {
-
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    .cards {
-
-        grid-template-columns: 1fr;
-    }
-
-    .grid {
-
-        grid-template-columns: 1fr;
+        display: none !important;
     }
 
     .hero h1 {
 
-        font-size: 28px;
+        font-size: 24px;
     }
+}
 
     table {
 
@@ -611,7 +566,7 @@ MOBILE
         overflow-x: auto;
         white-space: nowrap;
     }
-}
+
 
 .btn-delete{
 
