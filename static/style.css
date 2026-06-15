@@ -542,11 +542,11 @@ MOBILE
 
     .content {
 
-        margin-left: 140px;
+        margin-left: 170px;
 
-        width: calc(100% - 140px);
+        width: calc(100% - 170px);
 
-
+        padding: 15px;
     }
 
     .menu-mobile {
@@ -688,8 +688,8 @@ MOBILE
 }
 
 .logo-img {
-    width: 60px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 20px;
     cursor: pointer;
     transition: 0.3s;
