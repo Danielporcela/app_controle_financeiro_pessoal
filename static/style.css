@@ -528,7 +528,7 @@ MOBILE
 
         display: block !important;
 
-        width: 200px;
+        width: 170;
 
         position: fixed;
 
@@ -542,9 +542,9 @@ MOBILE
 
     .content {
 
-        margin-left: 200px;
+        margin-left: 170px;
 
-        width: calc(100% - 220px);
+        width: calc(100% - 170px);
 
         padding: 15px;
     }
