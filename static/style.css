@@ -65,7 +65,7 @@ SIDEBAR
 
 .sidebar.collapsed {
 
-    width: 80px;
+    width: 180px;
 }
 
 .logo{
@@ -146,7 +146,7 @@ CONTENT
 .content{
 
 
-margin-left:80px;
+margin-left:180px;
 
 width:100%;
 
