@@ -45,7 +45,7 @@ SIDEBAR
 
 .sidebar {
 
-    width: 260px;
+    width: 250px;
 
     background: var(--sidebar);
 
@@ -65,7 +65,7 @@ SIDEBAR
 
 .sidebar.collapsed {
 
-    width: 180px;
+    width: 170px;
 }
 
 .logo{
@@ -146,11 +146,11 @@ CONTENT
 .content{
 
 
-margin-left:180px;
+margin-left:170px;
 
 width:100%;
 
-padding:10px;
+padding:08px;
 
 
 }
