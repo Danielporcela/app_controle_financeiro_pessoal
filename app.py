@@ -102,12 +102,18 @@ def dashboard():
 
     despesas_cartao = con.execute(
         """
-        SELECT COALESCE(SUM(valor),0)
-        FROM parcelas
-        WHERE strftime('%Y-%m', vencimento)=?
-    """,
+    SELECT COALESCE(SUM(valor),0)
+    FROM parcelas
+    WHERE strftime('%Y-%m', vencimento)=?
+""",
         (mes_atual,),
     ).fetchone()[0]
+
+    compras_mes_cartao = con.execute("""
+    SELECT COALESCE(SUM(valor),0)
+    FROM compras_cartao
+    WHERE strftime('%Y-%m', data_compra)=?
+""", (mes_atual,)).fetchone()[0]
 
     despesas_fixas = con.execute("""
         SELECT COALESCE(SUM(valor),0)
@@ -166,7 +172,6 @@ def dashboard():
         classificacao = "🔴 Crítico"
 
     con.close()
-
     return render_template(
         "dashboard.html",
         receitas=receitas,
@@ -177,6 +182,7 @@ def dashboard():
         score=score,
         classificacao=classificacao,
         percentual_gasto=percentual_gasto,
+        compras_mes_cartao=compras_mes_cartao,
     )
 
 

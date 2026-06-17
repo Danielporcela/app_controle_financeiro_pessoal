@@ -47,10 +47,19 @@
     <h2>{{ metas }}</h2>
   </div>
 
-  <div class="card cartao">
-    <h3>💳 Cartões</h3>
+   <div class="card cartao">
+    <h3>💳 Gastos no Cartão</h3>
+      <p>
+        Gasto no mês:
+        <strong>
+            R$ {{ "{:,.2f}".format(compras_mes_cartao)
+            .replace(",", "X")
+            .replace(".", ",")
+            .replace("X", ".") }}
+        </strong>
+    </p>
+</div>
 
-    <h2>{{ cartoes }}</h2>
   </div>
 </div>
 
